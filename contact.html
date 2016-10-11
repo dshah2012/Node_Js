@@ -1,0 +1,272 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
+<title>eVENTIFY</title>
+<link rel="stylesheet" type="text/css" href="style.css" />
+<!--[if IE 6]>
+<link rel="stylesheet" type="text/css" href="iecss.css" />
+<![endif]-->
+<script type="text/javascript" src="js/boxOver.js"></script>
+<script>
+function check()
+{
+	var dd= document.getElementById('geti').value;
+	if(isNaN(dd))
+	{
+		<?php require 'connect.inc.php'; require 'core.inc.php'; ?>
+		alert("enter the right thing");
+	}
+	else
+	{
+	alert("your budget is "+dd+" you can procced to shop");
+	document.getElementById('geti')=" ";
+	}	
+}
+	if(<?php echo $_SESSION['budget'];?> < 0)
+	{
+		alert("The shopping has crossed your budget");
+	}
+</script>
+
+</head>
+<body>
+
+<div id="main_container" style="background-color:white;">
+	<!--<div class="top_bar">
+    	<div class="top_search">
+        	<div class="search_text"><a href="#">Advanced Search</a></div>
+            <input type="text" class="search_input" name="search" />
+            <input type="image" src="images/search.gif" class="search_bt"/>
+        </div>
+        
+      
+    
+    </div>-->
+	<div id="header">
+        
+        <div id="logo">
+            <a href="index.html"><img src="logof.png" alt="" title="" border="0" width="237" height="140" /></a>
+	    </div>
+        
+        <div class="oferte_content">
+        	<div class="top_divider"><img src="images/header_divider.png" alt="" title="" width="1" height="164" /></div>
+        	<div class="oferta">
+            
+           		<div class="oferta_content">
+                	<img src="d4.jpg" width="94" height="92" border="0" class="oferta_img" />
+                	
+                    <div class="oferta_details">
+                            <div class="oferta_title">eVENTIFY</div>
+                            <div class="oferta_text">
+                            This website deals with the events.
+                            </div>
+							<form action="main.php" method="POST">
+							
+							<?php if(loggedin()){echo '<font color="white">Enter Your Budget:</font>';echo '<input type="text" name="buda" placeholder="0000" value="" id="geti">
+                            <input type="submit" value="submit" class="details" onclick="check()">';}?>
+							</form>
+                    </div>
+                </div>      
+
+            </div>
+            <div class="top_divider"><img src="images/header_divider.png" alt="" title="" width="1" height="164" /></div>
+        	
+        </div> <!-- end of oferte_content-->
+        
+
+    </div>
+    
+   <div id="main_content"> 
+   
+            <div id="menu_tab">
+            <div class="left_menu_corner"></div>
+                    <ul class="menu">
+                         <li><a href="main.php" class="nav1">  Home </a></li>
+                         <li class="divider"></li>
+                         <li><a href="aboutUs.php" class="nav2">About us</a></li>
+                         <li class="divider"></li>
+                         <li><a href="#" class="nav3">Specials</a></li>
+                         <li class="divider"></li>
+                        <?php  if(!loggedin()){echo '<li><a href="index.php" class="nav4">user login</a></li>
+						 <li class="divider"></li>
+                         <li><a href="index1.php" class="nav4">shop login</a></li>
+                         <li class="divider"></li>';}?>
+                         <li><a href="contact.php" class="nav6">Contact Us</a></li>
+                        <?php if(loggedin()) echo '<li class="divider"></li>
+						 <li><a href="logout.php">logout</a></li>';
+						 if(isset($_POST['buda']))
+						 {
+							if(!empty($_POST['buda']))
+							{
+								if(ctype_digit($_POST['buda']))
+								{
+								$da = $_POST['buda'];
+								$_SESSION['budget']=$da;
+								}
+							}
+						 }
+						 ?>
+                        
+                         
+                    </ul>
+
+             <div class="right_menu_corner"></div>
+            </div><!-- end of menu tab -->
+            
+    <div class="crumb_navigation">
+    Navigation: <span class="current">Home</span>
+    
+    </div>        
+    
+    
+   <div class="left_content">
+    <div class="title_box">Categories</div>
+    
+        <ul class="left_menu">
+        <li class="odd"><a href="catering.php">Catering</a></li>
+        <li class="even"><a href="decoration.php">Decoration</a></li>
+         <li class="odd"><a href="banket.php">Banquet Hall</a></li>
+        <li class="even"><a href="hotels.php">Hotels</a></li>
+         <li class="odd"><a href="band.php">Band</a></li>
+        </ul> 
+       
+     
+ 
+     
+     <!--<div class="banner_adds">
+     
+     <a href="#"><img src="images/bann2.jpg" alt="" title="" border="0" /></a>
+     </div>-->    
+        
+    
+   </div><!-- end of left content -->
+   
+   
+   <div class="center_content">
+   	<div class="center_title_bar">Contact Us</div>
+    
+    	<div class="prod_box_big">
+        	<div class="top_prod_box_big"></div>
+            <div class="center_prod_box_big">            
+                 
+              	<div class="contact_form">
+                           
+                    <div class="form_row">
+                    <label class="contact"><strong>Name:</strong></label>
+                    <input type="text" class="contact_input" />
+                    </div>  
+
+                    <div class="form_row">
+                    <label class="contact"><strong>Email:</strong></label>
+                    <input type="text" class="contact_input" />
+                    </div>
+
+
+                    <div class="form_row">
+                    <label class="contact"><strong>Phone:</strong></label>
+                    <input type="text" class="contact_input" />
+                    </div>
+                    
+                    <div class="form_row">
+                    <label class="contact"><strong>Company:</strong></label>
+                    <input type="text" class="contact_input" />
+                    </div>
+
+
+                    <div class="form_row">
+                    <label class="contact"><strong>Message:</strong></label>
+                    <textarea class="contact_textarea" ></textarea>
+                    </div>
+
+                    
+                    <div class="form_row">
+                    <a href="#" class="contact">send</a>
+                    </div>      
+                    
+                </div> 
+                
+                                     
+            </div>
+            <div class="bottom_prod_box_big"></div>                                
+        </div>
+       
+    
+   
+   </div><!-- end of center content -->
+   
+   <div class="right_content">
+   		<div class="shopping_cart">
+        	<?php if(loggedin()){
+			$budd=$_SESSION['budget'];
+			echo 'budget='.$budd;
+			echo '<div class="cart_title">Shopping cart</div>
+			<div class="cart_details">
+            <br />
+            <span class="border_cart"></span>
+            Total: <span class="price"></span>
+            </div>
+            
+            <div class="cart_icon"><a href="shopcart.php" title="header=[Checkout] body=[&nbsp;] fade=[on]"><img src="images/shoppingcart.png" alt="" title="" width="48" height="48" border="0" /></a></div>
+        ';}?>
+        </div>
+   
+     <div class="title_box">What’s new</div>  
+     <div class="border_box">
+         <div class="product_title"></div>
+         <div class="product_img"><a href="#"><img src="images/ban/b6.jpg" alt="" title="" border="0" height="100" width="100"/></a></div>
+         <div class="prod_price"><span class="reduce">Rs.200000</span> <span class="price">Rs.180000</span></div>
+     </div>  
+     
+     
+     
+   <!-- <div class="title_box">Manufacturers</div>
+    
+        <ul class="left_menu">
+        <li class="odd"><a href="services.html">Sony</a></li>
+        <li class="even"><a href="services.html">Samsung</a></li>
+         <li class="odd"><a href="services.html">Daewoo</a></li>
+        <li class="even"><a href="services.html">LG</a></li>
+         <li class="odd"><a href="services.html">Fujitsu Siemens</a></li>
+         <li class="even"><a href="services.html">Motorola</a></li>
+        <li class="odd"><a href="services.html">Phillips</a></li>
+        <li class="even"><a href="services.html">Beko</a></li>
+        </ul>      
+     
+     <div class="banner_adds">
+     
+     <a href="#"><img src="images/bann1.jpg" alt="" title="" border="0" /></a>
+     </div> -->       
+     
+   </div><!-- end of right content -->   
+   
+            
+   </div><!-- end of main content -->
+   
+   
+   
+    <div class="footer">
+   
+
+        <div class="left_footer">
+        <img src="logof.png" alt="" title="" width="170" height="49"/>
+        </div>
+        
+        <div class="center_footer">
+        <br />
+        copyright ©  2014 eVENTIFY<br /><br />
+        </div>
+        
+        <div class="right_footer">
+        <a href="main.php">home</a>
+        <a href="aboutUs.php">about</a>
+        <a href="#">sitemap</a>
+        <a href="contact.php">contact us</a>
+        </div>   
+   
+   </div>         
+
+</div>
+<!-- end of main_container -->
+</body>
+</html>
